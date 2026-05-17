@@ -35,3 +35,34 @@ def affine_decryption(text, a, b):
             if i in alphabet:
                 result += alphabet[(a_inv * (alphabet.index(i) - b)) % len(alphabet)]
         return result
+    
+def main():
+    while True:
+        print("===== Affine =====")
+        print("1. Encrypt")
+        print("2. Decrypt")
+        print("3. Exit")
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            text = input("Enter the plaintext: ")
+            a = int(input("Enter the value of a: "))
+            b = int(input("Enter the value of b: "))
+            try:
+                encrypted_text = affine_encryption(text, a, b)
+                print(f"Encrypted text: {encrypted_text}")
+            except ValueError as e:
+                print(e)
+        
+        elif choice == 2:
+            text = input("Enter the ciphertext: ")
+            a = int(input("Enter the value of a: "))
+            b = int(input("Enter the value of b: "))
+            try:
+                decrypted_text = affine_decryption(text, a, b)
+                print(f"Decrypted text: {decrypted_text}")
+            except ValueError as e:
+                print(e)
+        
+        else:
+            break

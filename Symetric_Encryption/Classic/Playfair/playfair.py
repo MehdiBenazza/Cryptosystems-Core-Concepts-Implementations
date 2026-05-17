@@ -103,3 +103,26 @@ def playfair_decryption(text, key):
         i += 2
 
     return result
+
+def main():
+    while True:
+        print("===== Playfair =====")
+        print("1. Encrypt")
+        print("2. Decrypt")
+        print("3. Exit")
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            text = input("Enter the plaintext: ")
+            key = input("Enter the key: ")
+            encrypted_text = playfair_encryption(text, key)
+            print(f"Encrypted text: {encrypted_text}")
+        
+        elif choice == 2:
+            text = input("Enter the ciphertext: ")
+            key = input("Enter the key: ")
+            decrypted_text = playfair_decryption(text, key)
+            print(f"Decrypted text: {decrypted_text}")
+        
+        else:
+            break

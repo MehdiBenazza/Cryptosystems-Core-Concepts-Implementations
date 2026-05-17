@@ -1,5 +1,4 @@
-import Symetric_Encryption
-import Asymetric_Encryption
+from Symetric_Encryption.main_symetric import main as sym_main
 
 if __name__ == "__main__":
     while True:
@@ -8,8 +7,8 @@ if __name__ == "__main__":
         print("3. Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            Symetric_Encryption.main()
+            sym_main()
         elif choice == "2":
-            Asymetric_Encryption.main()
+            print("Asymmetric Encryption menu non implémenté pour l'instant.")
         else:
             break

@@ -1,4 +1,4 @@
-from Affine import mod_inverse
+from ..Affine.affine import mod_inverse
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
          'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
@@ -29,3 +29,34 @@ def hill_decryption(text, matrix):
         result += alphabet[(matrix_inv[0][0] * alphabet.index(text[i]) + matrix_inv[0][1] * alphabet.index(text[i+1])) % len(alphabet)]
         result += alphabet[(matrix_inv[1][0] * alphabet.index(text[i]) + matrix_inv[1][1] * alphabet.index(text[i+1])) % len(alphabet)]
     return result
+
+def main():
+    while True:
+        print("===== Hill Cipher =====")
+        print("1. Encrypt")
+        print("2. Decrypt")
+        print("3. Exit")
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            text = input("Enter the plaintext: ")
+            matrix = [[int(input("Enter the value of a11: ")), int(input("Enter the value of a12: "))],
+                      [int(input("Enter the value of a21: ")), int(input("Enter the value of a22: "))]]
+            try:
+                encrypted_text = hill_encryption(text, matrix)
+                print(f"Encrypted text: {encrypted_text}")
+            except ValueError as e:
+                print(e)
+        
+        elif choice == 2:
+            text = input("Enter the ciphertext: ")
+            matrix = [[int(input("Enter the value of a11: ")), int(input("Enter the value of a12: "))],
+                      [int(input("Enter the value of a21: ")), int(input("Enter the value of a22: "))]]
+            try:
+                decrypted_text = hill_decryption(text, matrix)
+                print(f"Decrypted text: {decrypted_text}")
+            except ValueError as e:
+                print(e)
+        
+        else:
+            break

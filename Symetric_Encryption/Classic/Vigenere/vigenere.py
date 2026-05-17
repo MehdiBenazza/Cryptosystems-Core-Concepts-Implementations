@@ -18,3 +18,26 @@ def vigenere_decryption(text, key):
             shift = alphabet.index(key[i % key_length])
             result += alphabet[(alphabet.index(text[i]) - shift) % len(alphabet)]
     return result
+
+def main():
+    while True:
+        print("===== Vigenere =====")
+        print("1. Encrypt")
+        print("2. Decrypt")
+        print("3. Exit")
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 1:
+            text = input("Enter the plaintext: ")
+            key = input("Enter the key: ")
+            encrypted_text = vigenere_encryption(text, key)
+            print(f"Encrypted text: {encrypted_text}")
+        
+        elif choice == 2:
+            text = input("Enter the ciphertext: ")
+            key = input("Enter the key: ")
+            decrypted_text = vigenere_decryption(text, key)
+            print(f"Decrypted text: {decrypted_text}")
+        
+        else:
+            break
